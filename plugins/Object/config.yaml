@@ -1,0 +1,18 @@
+# Object
+#
+# Release 0.01 (Nov 09, 2010)
+#
+# Copyright (c) 2004-2010 Yujiro Araki
+
+name: Object
+id: Object
+author_link: http://www.koikikukan.com/
+author_name: Yujiro Araki
+doc_link: http://www.koikikukan.com/archives/2010/11/09-005555.php
+description: Object
+version: 0.01
+tags:
+    block:
+        Objects: $Object::Object::Tags::_hdlr_objects
+    function:
+        Object: $Object::Object::Tags::_hdlr_object_data
