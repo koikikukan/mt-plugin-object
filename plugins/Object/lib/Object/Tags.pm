@@ -56,6 +56,8 @@ sub _hdlr_object_data {
 
     my $object = $ctx->stash($name)
         or return $ctx->error();
+    $object->has_column($prop)
+        or return $ctx->error(MT->translate("You have an error in your '[_2]' attribute: [_1]", $prop, 'property'));
     return $object->$prop;
 }
 
