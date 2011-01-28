@@ -10,11 +10,23 @@ sub _hdlr_objects {
     my $class = MT->model($name);
     return '' if !$class;
 
+    my $start = $args->{start};
+    my $end = $args->{end};
+    my $incl = $args->{incl};
+    my $sort = $args->{sort};
+    my $status = $args->{status};
+
     my $res = '';
     my $builder = $ctx->stash('builder');
     my $tokens = $ctx->stash('tokens');
 
     my ($term, $arg);
+
+    $arg->{ sort } = $sort if $sort;
+    $arg->{ range_incl } = { $sort => 1 } if $incl && ($start && $end);
+    $arg->{ range } = { $sort => 1 } if !$incl && ($start && $end);
+    $term->{ $sort } = [ $start, $end ] if $sort && ($start && $end);
+    $term->{ status } = $status if $status;
 
     my $blog = $ctx->stash('blog');
     $term->{blog_id} = $blog->id;
@@ -28,7 +40,6 @@ sub _hdlr_objects {
 
     my @objects = $class->load($term, $arg);
     return '' if !@objects;
-
     my $count = 0;
     my $max = scalar @objects;
     my $vars = $ctx->{__stash}{vars} ||= {};

@@ -2,8 +2,9 @@
 #
 # Release 0.01 (Nov 09, 2010)
 # Release 0.02 (Dec 11, 2010) security update.
+# Release 0.03 (Jan 28, 2011) add end,incl,sort,start,status modifier.
 #
-# Copyright (c) 2004-2010 Yujiro Araki
+# Copyright (c) 2004-2011 Yujiro Araki
 
 name: Object
 id: Object
@@ -11,7 +12,7 @@ author_link: http://www.koikikukan.com/
 author_name: Yujiro Araki
 doc_link: http://www.koikikukan.com/archives/2010/11/09-005555.php
 description: Object
-version: 0.02
+version: 0.03
 tags:
     block:
         Objects: $Object::Object::Tags::_hdlr_objects
