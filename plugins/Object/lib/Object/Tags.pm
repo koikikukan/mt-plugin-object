@@ -39,7 +39,6 @@ sub _hdlr_objects {
     }
 
     my @objects = $class->load($term, $arg);
-    return '' if !@objects;
     my $count = 0;
     my $max = scalar @objects;
     my $vars = $ctx->{__stash}{vars} ||= {};
@@ -55,8 +54,10 @@ sub _hdlr_objects {
         return $ctx->error( $builder->errstr ) unless defined $out;
         $res .= $out;
     }
+    if (!@objects) {
+        return MT::Template::Context::_hdlr_pass_tokens_else(@_);
+    }
     $res;
-
 }
 
 sub _hdlr_object_data {
