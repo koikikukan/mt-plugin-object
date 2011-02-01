@@ -21,7 +21,7 @@ plugins directory, you have finished the installation.
 
 ATTRIBUTES:
 
-For MTObjects tag
+For mt:Objects block tag
 
 * name (required)
 * start (optional)
@@ -44,11 +44,11 @@ Accepted values are 'authored_on' , 'created_on' and 'modified_on'.
 
 Accepted values are '1' , '2' and '4'.
 
-For MTObject tag
+For mt:Object function tag
 
 * property (required)
 
-function tag - <mt:Objest>
+Accepted values are property of database.
 
 EXAMPLE:
 
