@@ -1,0 +1,159 @@
+Object Plugin for Movable Type
+
+Author: Yujiro Araki
+Version: 0.03
+Released under __LICENSE__
+
+OVERVIEW:
+
+This is Movable Type plugin for MTObjects block tag and MTObject function tag.
+
+PREREQUISITES:
+
+Movable Type 4.0 or greater
+
+INSTALLATION:
+
+Unpack the distribution package to your Movable Type directory.
+
+Once the Object folder is installed in your installation's
+plugins directory, you have finished the installation.
+
+ATTRIBUTES:
+
+For MTObjects tag
+
+* name (required)
+* start (optional)
+
+Accepted values are timestamp(YYYYMMDDHHMMSS).
+
+* end (optional)
+
+Accepted values are timestamp(YYYYMMDDHHMMSS).
+
+* incl (optional; default '0')
+
+Accepted values are '1'.
+
+* sort (optional)
+
+Accepted values are 'authored_on' , 'created_on' and 'modified_on'.
+
+* status (optional)
+
+Accepted values are '1' , '2' and '4'.
+
+For MTObject tag
+
+* property (required)
+
+function tag - <mt:Objest>
+
+EXAMPLE:
+
+- Entries
+
+<mt:Objects name="entry">
+  <mt:Object name="entry" property="title" />
+</mt:Objects>
+
+or
+
+<mt:Entries>
+  <mt:Object name="entry" property="title" />
+</mt:Entries>
+
+or 
+
+<mt:EntryDate format="%Y" setvar="year" />
+<mt:EntryDate format="%m%d" setvar="month_day" />
+<mt:SetVar name="year" op="--" />
+<mt:SetVarBlock name="start"><mt:GetVar name="year" /><mt:GetVar name="month_day" />000000</mt:SetVarBlock>
+<mt:SetVarBlock name="end"><mt:GetVar name="year" /><mt:GetVar name="month_day" />235959</mt:SetVarBlock>
+<mt:Objects name="entry" status="2" sort="authored_on" start="$start" end="$end" incl="1">
+  <mt:if name="__first__">
+Entry of today one year ago is
+  </mt:if>
+  <a href="<mt:EntryPermalink>"><mt:EntryTitle /></a>
+  <mt:if name="__last__">.
+  <mt:else>,
+  </mt:if>
+  <mt:else>
+No entry of today one year ago.
+</mt:Objects>
+
+<mt:Objects name="entry">
+  <mt:if name="__first__">first</mt:if>
+  <mt:if name="__last__">last</mt:if>
+  <mt:if name="__odd__">odd</mt:if>
+  <mt:if name="__even__">even</mt:if>
+  <mt:var name="__counter__">
+  <mt:Object name="entry" property="title" />
+</mt:Objects>
+
+- Comments
+
+<mt:Comments>
+  <mt:Object name="comment" property="text" />
+</mt:Comments>
+
+or
+
+<mt:Objects name="comment">
+  <mt:Object name="comment" property="text" />
+</mt:Objects>
+
+- Categories
+
+<mt:Categories>
+  <mt:Object name="category" property="label" />
+</mt:Categories>
+
+or
+
+<mt:Objects name="category">
+  <mt:Object name="category" property="label" />
+</mt:Objects>
+
+- Assets
+
+<mt:Assets>
+  <mt:Object name="asset" property="label" />
+</mt:Assets>
+
+or
+
+<mt:Objects name="asset">
+  <mt:Object name="asset" property="label" />
+</mt:Objects>
+
+- Templates
+
+<mt:Objects name="template">
+  <mt:Object name="template" property="name" />
+</mt:Objects>
+
+- Authors
+
+<mt:Authors>
+  <mt:Object name="author" property="name" />
+</mt:Authors>
+
+or
+
+<mt:Objects name="author">
+  <mt:Object name="author" property="name" />
+</mt:Objects>
+
+- Log
+
+<mt:Objects name="log">
+  <mt:Object name="log" property="message" />
+</mt:Objects>
+
+- Session
+
+<mt:Objects name="session">
+  <mt:Object name="session" property="data" />
+</mt:Objects>
